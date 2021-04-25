@@ -1,0 +1,83 @@
+﻿@model Meeting_System.Models.Meeting
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Meeting</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetingStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetingStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetingDuration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetingDuration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Users)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>First and middle name</th>
+                    <th>Last name</th>
+                </tr>
+                @foreach (var item in Model.Users)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstMiddleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <!--Does not currently show anything. There is an error somewhere.-->
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MeetingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -34,9 +34,47 @@
             @Html.DisplayFor(model => model.SignupDate)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Meetings)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+                @foreach (var item in Model.Meetings)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <!--Does not currently show anything. There is an error somewhere.-->
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

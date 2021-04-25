@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Meeting_System.Models.Room>
+
+@{
+    ViewBag.Title = "Rooms";
+}
+
+<h2>Rooms</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxCapacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longtitude)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longtitude)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RoomId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RoomId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RoomId })
+            </td>
+        </tr>
+    }
+
+</table>

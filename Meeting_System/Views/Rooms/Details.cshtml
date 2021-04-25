@@ -1,0 +1,76 @@
+﻿@model Meeting_System.Models.Room
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Room</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longtitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longtitude)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Meetings)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Meeting id</th>
+                    <th>Start of meeting</th>
+                    <th>Duration of meeting</th>
+                </tr>
+                @foreach (var item in Model.Meetings)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingStart)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingDuration)
+                        </td>
+                        <!--Does not currently show anything. There is an error somewhere..-->
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoomId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

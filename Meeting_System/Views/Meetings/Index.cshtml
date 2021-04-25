@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Meeting_System.Models.Meeting>
+
+@{
+    ViewBag.Title = "Meetings";
+}
+
+<h2>Meetings</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.MeetingStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeetingDuration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    
+    <td>
+        @Html.DisplayFor(modelItem => item.MeetingStart)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MeetingDuration)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.MeetingId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MeetingId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MeetingId })
+    </td>
+</tr>
+}
+
+</table>
