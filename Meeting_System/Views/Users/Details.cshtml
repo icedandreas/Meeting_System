@@ -55,20 +55,36 @@
         <dd>
             <table class="table">
                 <tr>
+                    <th>Meeting id</th>
                     <th>Title</th>
                     <th>Description</th>
+                    <th>Room id</th>
+                    <th>Meeting start</th>
+                    <th>Meeting Duration</th>
                 </tr>
                 @foreach (var item in Model.Meetings)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingId)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
-                        <!--Does not currently show anything. There is an error somewhere.-->
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingStart)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingDuration)
+                        </td>
                     </tr>
+                    <!--Doesn't currently work because Model.Meetings is empty.-->
                 }
             </table>
         </dd>

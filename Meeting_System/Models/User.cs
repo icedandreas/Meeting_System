@@ -9,7 +9,7 @@ namespace Meeting_System.Models
     {
         public User()
         {
-            this.Meetings = new HashSet<Meeting>();
+            this.Meetings = new List<Meeting>();
         }
         public int UserId { get; set; }
         public string FirstMiddleName { get; set; }

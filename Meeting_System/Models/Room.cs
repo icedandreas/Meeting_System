@@ -9,7 +9,7 @@ namespace Meeting_System.Models
     {
         public Room()
         {
-            this.Meetings = new HashSet<Meeting>();
+            this.Meetings = new List<Meeting>();
         }
         public int RoomId { get; set; }
         public int MaxCapacity { get; set; }
