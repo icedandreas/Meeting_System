@@ -7,12 +7,16 @@ namespace Meeting_System.Models
 {
     public class User
     {
-        public int ID { get; set; }
+        public User()
+        {
+            this.Meetings = new HashSet<Meeting>();
+        }
+        public int UserId { get; set; }
         public string FirstMiddleName { get; set; }
         public string LastName { get; set; }
 
         public DateTime SignupDate { get; set; }
-        public virtual ICollection<Meeting> Meetings { get; set; }
+        public ICollection<Meeting> Meetings { get; set; }
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
 }
