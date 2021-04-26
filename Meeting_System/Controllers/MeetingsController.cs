@@ -58,13 +58,33 @@ namespace Meeting_System.Controllers
                 meeting.Users = new List<User>();
                 foreach (var user in selectedUsers)
                 {
-                    var userToAdd = db.Users.Find(int.Parse(user));
-                    meeting.Users.Add(userToAdd);
+                    var userToAdd = db.Users.Find(int.Parse(user));         
+                    meeting.Users.Add(userToAdd);//Fill the list of Users that are set to attend the meeting
+                    //meeting.Users.Meetings = new List<Meeting>(); This approach doesn't work. Find another.
+                    foreach (Meeting meetings in userToAdd.Meetings)
+                    {
+                        DateTime meetingEnd = meetings.MeetingStart + meetings.MeetingDuration;
+                        DateTime meetingEnd1 = meeting.MeetingStart + meeting.MeetingDuration;
+                        bool overlap = meetings.MeetingStart < meetingEnd1 && meeting.MeetingStart < meetingEnd;
+                        if (overlap)
+                        {
+                            //Write a message to the user explaining that the meeting overlaps a current meeting.
+                            PopulateAssignedUserData(meeting);
+                            return View(meeting);
+                        }
+                    }
                 }
                 
                 var selectedRoom = db.Rooms.Find(meeting.RoomId);
+                if(selectedRoom == null)
+                {
+                    //Write a pop-up saying the room doesn't exist, and ask the user to choose another room.
+                    PopulateAssignedUserData(meeting);
+                    return View(meeting);
+                }
                 if (meeting.Users.Count > selectedRoom.MaxCapacity || meeting.MeetingStart <= DateTime.Now)//The meeting is not created if the room doesn't have enough capacity.
                 {
+                    //Could split this into 1 check for Maximum capacity and another for the Datetime. Each with a user message.
                     PopulateAssignedUserData(meeting);
                     return View(meeting);
                 }
@@ -120,6 +140,11 @@ namespace Meeting_System.Controllers
                 UpdateMeetingUsers(selectedUsers, meetingsToUpdate);
                 Meeting meeting = db.Meetings.Find(id);
                 var selectedRoom = db.Rooms.Find(meeting.RoomId);
+                if (selectedRoom == null)
+                {
+                    PopulateAssignedUserData(meeting);
+                    return View(meeting);
+                }
                 if (meeting.Users.Count > selectedRoom.MaxCapacity || meeting.MeetingStart <= DateTime.Now)//The meeting cannot be edited if the room doesn't have enough capacity.
                 {
                     PopulateAssignedUserData(meeting);
