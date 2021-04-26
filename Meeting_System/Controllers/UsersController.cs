@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Meeting_System.DAL;
+﻿using Meeting_System.DAL;
 using Meeting_System.Models;
 using PagedList;
+using System;
+using System.Data;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
 
 namespace Meeting_System.Controllers
 {

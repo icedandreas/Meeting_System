@@ -1,8 +1,5 @@
 ﻿using Meeting_System.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data.Entity;
 
 namespace Meeting_System.DAL
@@ -22,7 +19,7 @@ namespace Meeting_System.DAL
              * Meetings - Rooms are one to many
              * Because of this I had to make individual variable names instead of a list
              */
-            var user1 = new User { FirstMiddleName = "Andreas Laugård", LastName = "Hald", SignupDate = DateTime.Parse("01-10-2020")};
+            var user1 = new User { FirstMiddleName = "Andreas Laugård", LastName = "Hald", SignupDate = DateTime.Parse("01-10-2020"), EmailAddress = "a-hald@stofanet.dk", PhoneNumber = "40513904"};
             var user2 = new User { FirstMiddleName = "Karl Børge", LastName = "Sigurdsen", SignupDate = DateTime.Parse("10-5-2020") };
             var user3 = new User { FirstMiddleName = "Kim", LastName = "Larsen", SignupDate = DateTime.Parse("02-04-2020") };
             var user4 = new User { FirstMiddleName = "Britney", LastName = "Spears", SignupDate = DateTime.Parse("02-04-2021") };
