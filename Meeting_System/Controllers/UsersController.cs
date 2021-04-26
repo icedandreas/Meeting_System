@@ -32,7 +32,7 @@ namespace Meeting_System.Controllers
             }
             ViewBag.CurrentFilter = searchString;
             var users = from s in db.Users
-                           select s;
+                        select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 users = users.Where(s => s.LastName.Contains(searchString)
@@ -86,6 +86,7 @@ namespace Meeting_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "FirstMiddleName,LastName,SignupDate,EmailAddress,PhoneNumber")] User user)
         {
+            user.SignupDate = DateTime.Now;
             try
             {
                 if (ModelState.IsValid)
@@ -140,7 +141,7 @@ namespace Meeting_System.Controllers
                     return RedirectToAction("Index");
                 }
                 catch (DataException)
-                {           
+                {
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
                     //Log the error
                 }
@@ -179,7 +180,7 @@ namespace Meeting_System.Controllers
                 db.SaveChanges();
             }
             catch (DataException)
-            {                
+            {
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
                 //Log the error in the future.
             }

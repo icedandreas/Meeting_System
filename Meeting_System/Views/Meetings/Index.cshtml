@@ -11,7 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        
         <th>
             @Html.DisplayNameFor(model => model.MeetingStart)
         </th>
@@ -24,12 +23,17 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
         <th></th>
     </tr>
-
 @foreach (var item in Model) {
 <tr>
-    
+
     <td>
         @Html.DisplayFor(modelItem => item.MeetingStart)
     </td>
@@ -41,6 +45,17 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @{
+            foreach (var user in item.Users)
+            {
+                @user.UserId @:  @user.FullName <br />
+            }
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RoomId)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.MeetingId }) |

@@ -48,23 +48,31 @@
             <table class="table">
                 <tr>
                     <th>Meeting id</th>
-                    <th>Start of meeting</th>
-                    <th>Duration of meeting</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Meeting start</th>
+                    <th>Meeting duration</th>
                 </tr>
                 @foreach (var item in Model.Meetings)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MeetingId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MeetingStart)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MeetingDuration)
-                        </td>
-                        <!--Does not currently show anything. There is an error somewhere..-->
-                    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeetingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeetingStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeetingDuration)
+                </td>
+                <!--Doesn't currently work because Model.Meetings is empty.-->
+            </tr>
                 }
             </table>
         </dd>

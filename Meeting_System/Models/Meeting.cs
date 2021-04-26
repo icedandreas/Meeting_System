@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Meeting_System.Models
 {
@@ -14,15 +15,13 @@ namespace Meeting_System.Models
         }
         public int MeetingId { get; set; }
         public virtual ICollection<User> Users { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy hh:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime MeetingStart { get; set; }
+        [DataType(DataType.Time)]
         public TimeSpan MeetingDuration { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int RoomId { get; set; }
-        /*
-        [ForeignKey("Room")]
-        public int RoomRefId { get; set; }
-        public Room Room { get; set; }
-        */
     }
 }
