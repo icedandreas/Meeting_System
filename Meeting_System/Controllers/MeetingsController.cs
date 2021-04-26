@@ -4,11 +4,9 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Meeting_System.DAL;
 using Meeting_System.Models;
-using System.Data.Entity.Infrastructure;
 
 namespace Meeting_System.Controllers
 {
@@ -60,8 +58,7 @@ namespace Meeting_System.Controllers
                 {
                     var userToAdd = db.Users.Find(int.Parse(user));         
                     meeting.Users.Add(userToAdd);//Fill the list of Users that are set to attend the meeting
-                    //meeting.Users.Meetings = new List<Meeting>(); This approach doesn't work. Find another.
-                    foreach (Meeting meetings in userToAdd.Meetings)
+                    foreach (Meeting meetings in userToAdd.Meetings)//An attempt at preventing meeting scheduling conflicts, but userToAdd.Meetings is always empty. 
                     {
                         DateTime meetingEnd = meetings.MeetingStart + meetings.MeetingDuration;
                         DateTime meetingEnd1 = meeting.MeetingStart + meeting.MeetingDuration;
@@ -74,7 +71,7 @@ namespace Meeting_System.Controllers
                         }
                     }
                 }
-                
+
                 var selectedRoom = db.Rooms.Find(meeting.RoomId);
                 if(selectedRoom == null)
                 {
