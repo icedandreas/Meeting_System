@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Meeting_System.Models
 {
@@ -9,11 +11,14 @@ namespace Meeting_System.Models
     {
         public Meeting()
         {
-            this.Users = new List<User>();
+            this.Users = new HashSet<User>();
         }
         public int MeetingId { get; set; }
         public virtual ICollection<User> Users { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy hh:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime MeetingStart { get; set; }
+        [DataType(DataType.Time)]
         public TimeSpan MeetingDuration { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

@@ -71,7 +71,7 @@ namespace Meeting_System.DAL
             meeting3.Users.Add(user5);
             user5.Meetings.Add(meeting3);
 
-            room1.Meetings.Add(meeting1);
+            room2.Meetings.Add(meeting1);
             room2.Meetings.Add(meeting2);
             room1.Meetings.Add(meeting3);
 

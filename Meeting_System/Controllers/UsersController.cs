@@ -86,6 +86,7 @@ namespace Meeting_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "FirstMiddleName,LastName,SignupDate,EmailAddress,PhoneNumber")] User user)
         {
+            user.SignupDate = DateTime.Now;
             try
             {
                 if (ModelState.IsValid)
